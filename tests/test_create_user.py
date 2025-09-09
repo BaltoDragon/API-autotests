@@ -7,7 +7,7 @@ HEADERS = {
     'Content-Type': 'application/json',
 }
 
-valid_data_body = [
+data_body = [
         #default_data
          {
             "id": 0, "username": "string", "firstName": "string", "lastName": "string",
@@ -35,8 +35,8 @@ valid_data_body = [
          }
         ]
 
-@pytest.mark.parametrize('positive_data', valid_data_body)
-def test_status_code_200(positive_data):
+@pytest.mark.parametrize('testing_data', data_body)
+def test_create(testing_data):
     url = f'{BASE_URL}/user'
-    response_create = requests.post(url, headers = HEADERS, json = positive_data)
+    response_create = requests.post(url, headers = HEADERS, json = testing_data)
     assert response_create.status_code == 200

@@ -11,7 +11,7 @@ HEADERS = {
 @pytest.fixture()
 def create_user():
     data_body = {
-        "id": 0, "username": "TestDeleteUserA", "firstName": "MyName",
+        "id": 0, "username": "TestDeleteUserBC", "firstName": "MyName",
         "email": "example@ex.com", "password": "PASSWORD"
     }
     url = f'{BASE_URL}/user'
@@ -26,3 +26,8 @@ def test_delete(create_user):
     url = f'{BASE_URL}/user/{create_user['username']}'
     response_delete = requests.delete(url)
     assert response_delete.status_code == 200
+
+def test_delete_fail(create_user):
+    url = f'{BASE_URL}/user/NoUserInSystem'
+    response_delete = requests.delete(url)
+    assert response_delete.status_code == 404

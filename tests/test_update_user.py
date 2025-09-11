@@ -9,7 +9,7 @@ HEADERS = {
 }
 
 data_body = {
-    "id": 0, "username": "TestUpdateUserA", "password": "PASSWORD"
+    "id": 0, "username": "TestUpdateUserAB", "password": "PASSWORD"
 }
 
 data_update_1 = {"email": "example@ex.com"}

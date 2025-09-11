@@ -1,5 +1,3 @@
-from types import NoneType
-
 import pytest
 import requests
 import time
@@ -10,7 +8,7 @@ HEADERS = {
 }
 
 data_body = {
-    "id": 0, "username": "TestGetUserB", "password": "PASSWORD"
+    "id": 0, "username": "TestGetUserBD", "password": "PASSWORD"
 }
 
 @pytest.fixture()

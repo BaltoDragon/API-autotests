@@ -1,7 +1,7 @@
 BASE_URL = 'https://petstore.swagger.io/v2'
 
 #Заголовки
-HEADERS_CREATE = {
+HEADERS_BASE = {
     'accept': 'application/json',
     'Content-Type': 'application/json',
 }

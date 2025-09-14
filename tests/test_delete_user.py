@@ -1,33 +1,17 @@
-import pytest
+import data
 import requests
-import time
 
-BASE_URL = 'https://petstore.swagger.io/v2'
-HEADERS = {
-    'accept': 'application/json',
-    'Content-Type': 'application/json',
-}
-
-@pytest.fixture()
-def create_user():
-    data_body = {
-        "id": 0, "username": "TestDeleteUserBC", "firstName": "MyName",
-        "email": "example@ex.com", "password": "PASSWORD"
-    }
-    url = f'{BASE_URL}/user'
-    requests.post(url, headers=HEADERS, json=data_body)
-    time.sleep(4)
-    username = data_body['username']
-    url = f'{BASE_URL}/user/{username}'
-    userdata = requests.get(url, headers=HEADERS)
-    return userdata.json()
-
-def test_delete(create_user):
-    url = f'{BASE_URL}/user/{create_user['username']}'
-    response_delete = requests.delete(url)
-    assert response_delete.status_code == 200
-
-def test_delete_fail(create_user):
-    url = f'{BASE_URL}/user/NoUserInSystem'
+def test_delete_incorrect_username():
+    url = f'{data.BASE_URL}/user/NoUserInSystem'
     response_delete = requests.delete(url)
     assert response_delete.status_code == 404
+
+def test_delete_incorrect_url():
+    url = f'{data.BASE_URL}/usour/NoUserInSystem'
+    response_delete = requests.delete(url)
+    assert response_delete.status_code == 404
+
+def test_delete_without_username():
+    url = f'{data.BASE_URL}/user/'
+    response_delete = requests.delete(url)
+    assert response_delete.status_code == 405

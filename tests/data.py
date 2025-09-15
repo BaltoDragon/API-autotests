@@ -6,19 +6,27 @@ HEADERS_BASE = {
     'Content-Type': 'application/json',
 }
 
+HEADERS_MINI = {
+    'accept': 'application/json',
+}
+
 #Тестовые данные
 body_empty_list = []
 
+body_user_mini = {
+    "id": 0, "username": "TestGetUserBD", "password": "PASSWORD"
+}
+
 body_user = {
-             "id": 0, "username": "nicknameUser", "firstName": "MyName", "lastName": "MyLastName",
-             "email": "example@ex.com", "password": "PASSWORD", "phone": "1234567890", "userStatus": 0
-         }
+    "id": 0, "username": "nicknameUser", "firstName": "MyName", "lastName": "MyLastName",
+    "email": "nicknameUser@ex.com", "password": "PASSWORD", "phone": "1234567890", "userStatus": 0
+}
 
 body_user_list = [{
-             "id": 0, "username": "nicknameUserList", "firstName": "MyName", "lastName": "MyLastName",
-             "email": "example@ex.com", "password": "PASSWORD", "phone": "1234567890", "userStatus": 0
-         }
-    ]
+        "id": 0, "username": "nicknameUserList", "firstName": "MyName", "lastName": "MyLastName",
+        "email": "nicknameUserList@ex.com", "password": "PASSWORD", "phone": "1234567890", "userStatus": 0
+    }
+]
 
 body_users_list = [
         #0_default_data
@@ -29,7 +37,7 @@ body_users_list = [
         #1_real_data
          {
              "id": 0, "username": "nickname", "firstName": "MyName", "lastName": "MyLastName",
-             "email": "example@ex.com", "password": "PASSWORD", "phone": "1234567890", "userStatus": 0
+             "email": "nickname@ex.com", "password": "PASSWORD", "phone": "1234567890", "userStatus": 0
          },
         #2_mini_data
          {
@@ -47,3 +55,9 @@ body_users_list = [
              "email": "e" * 245 + "@ex.com", "password": "p" * 256, "phone": "1" * 256, "userStatus": 1
          }
         ]
+
+update_data_single = {"email": "example@ex.com"}
+
+update_data_multi = {"lastName": "MyLastName", "phone": "1234567890", "userStatus": 35}
+
+update_data_array = [update_data_single, update_data_multi]

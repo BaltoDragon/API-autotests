@@ -23,6 +23,12 @@ def test_create_incorrect_url():
     response_create = requests.post(url, headers = data.HEADERS_BASE, json = data.body_user)
     assert response_create.status_code == 404
 
+@pytest.mark.parametrize('testing_data', data.body_users_list_incorrect)
+def test_create_user_incorrect_data(testing_data):
+    url = f'{data.BASE_URL}/user'
+    response_get = requests.get(url, headers = data.HEADERS_BASE, json = testing_data)
+    assert response_get.status_code == 405
+
 def test_create_not_allowed_method_get():
     url = f'{data.BASE_URL}/user'
     response_create = requests.get(url, headers = data.HEADERS_BASE, json = data.body_user)
